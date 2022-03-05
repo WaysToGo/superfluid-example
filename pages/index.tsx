@@ -21,9 +21,8 @@ async function createNewFlow(recipient: string, flowRate: string) {
     chainId: Number(chainId),
     provider: provider
   });
-  console.log(Number(chainId), provider, flowRate, recipient);
 
-  const DAIx = "0xBF6201a6c48B56d8577eDD079b84716BB4918E8A";
+  const DAIx = "0xF2d68898557cCb2Cf4C10c3Ef2B034b2a69DAD00";
 
   try {
     const createFlowOperation = sf.cfaV1.createFlow({
@@ -34,14 +33,12 @@ async function createNewFlow(recipient: string, flowRate: string) {
     });
 
     console.log("Creating your stream...");
-
     const result = await createFlowOperation.exec(signer);
     console.log(result);
 
-    console.log(
+    alert(
       `Congrats - you've just created a money stream!
     View Your Stream At: https://app.superfluid.finance/dashboard/${recipient}
-    Network: Kovan
     Super Token: DAIx
     Sender: 0x480C0B88C003e0fC3De3474343EC29EF95350dF8
     Receiver: ${recipient},
@@ -50,8 +47,8 @@ async function createNewFlow(recipient: string, flowRate: string) {
     );
   } catch (error) {
     console.log(error)
-    console.log(
-      "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
+    alert(
+      "your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
     );
     console.error(error);
   }
@@ -176,6 +173,7 @@ const Home = (props: Props) => {
               </button>
             </div>
           </div>
+          {flowRateDisplay && <div> Flow Rate {flowRateDisplay}</div>}
         </main>
 
       </div >
