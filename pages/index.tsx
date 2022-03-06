@@ -40,7 +40,6 @@ async function createNewFlow(recipient: string, flowRate: string) {
       `Congrats - you've just created a money stream!
     View Your Stream At: https://app.superfluid.finance/dashboard/${recipient}
     Super Token: DAIx
-    Sender: 0x480C0B88C003e0fC3De3474343EC29EF95350dF8
     Receiver: ${recipient},
     FlowRate: ${flowRate}
     `
@@ -82,6 +81,7 @@ const Home = (props: Props) => {
     let newFlowRateDisplay = calculateFlowRate(e.target.value);
     setFlowRateDisplay(newFlowRateDisplay!.toString());
   };
+
 
   return (
     <RootLayout>
